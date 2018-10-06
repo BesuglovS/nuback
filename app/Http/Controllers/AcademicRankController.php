@@ -16,6 +16,7 @@ class AcademicRankController extends Controller
 
         $newAcademicRank->rank = $request->rank ?? "";
         $newAcademicRank->date = $request->date ?? "";
+        $newAcademicRank->teacher_id = $request->teacher_id ?? "";
 
         $newAcademicRank->save();
 
@@ -31,6 +32,7 @@ class AcademicRankController extends Controller
 
         if (!is_null($request->rank)) $AcademicRank->rank = $request->rank;
         if (!is_null($request->date)) $AcademicRank->date = $request->date;
+        if (!is_null($request->teacher_id)) $AcademicRank->teacher_id = $request->teacher_id;
 
         $AcademicRank->save();
 

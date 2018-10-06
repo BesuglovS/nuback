@@ -17,6 +17,7 @@ class CreateAcademicRanksTable extends Migration
             $table->increments('id');
             $table->string('rank');
             $table->date('date');
+            $table->integer('teacher_id')->unsigned();
         });
     }
 

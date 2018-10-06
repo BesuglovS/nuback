@@ -18,6 +18,7 @@ class CreateAcademicDegreesTable extends Migration
             $table->string('degree');
             $table->string('science_field');
             $table->date('date');
+            $table->integer('teacher_id')->unsigned();
         });
     }
 

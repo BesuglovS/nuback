@@ -21,6 +21,7 @@ class CreatePositionsTable extends Migration
             $table->string('order');
             $table->boolean('elected');
             $table->string('election_protocol');
+            $table->integer('teacher_id')->unsigned();
         });
     }
 

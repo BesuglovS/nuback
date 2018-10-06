@@ -20,6 +20,7 @@ class PositionController extends Controller
         $newPosition->order = $request->order ?? "";
         $newPosition->elected = $request->elected ?? "";
         $newPosition->election_protocol = $request->election_protocol ?? "";
+        $newPosition->teacher_id = $request->teacher_id ?? "";
 
         $newPosition->save();
 
@@ -39,6 +40,7 @@ class PositionController extends Controller
         if (!is_null($request->order)) $Position->order = $request->order;
         if (!is_null($request->elected)) $Position->elected = $request->elected;
         if (!is_null($request->election_protocol)) $Position->election_protocol = $request->election_protocol;
+        if (!is_null($request->teacher_id)) $Position->teacher_id = $request->teacher_id;
 
         $Position->save();
 

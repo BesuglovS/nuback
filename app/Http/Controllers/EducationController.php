@@ -18,6 +18,7 @@ class EducationController extends Controller
         $newEducation->specialty = $request->specialty ?? "";
         $newEducation->qualification = $request->qualification ?? "";
         $newEducation->year = $request->year ?? "";
+        $newEducation->teacher_id = $request->teacher_id ?? "";
 
         $newEducation->save();
 
@@ -35,6 +36,7 @@ class EducationController extends Controller
         if (!is_null($request->specialty)) $Education->specialty = $request->specialty;
         if (!is_null($request->qualification)) $Education->qualification = $request->qualification;
         if (!is_null($request->year)) $Education->year = $request->year;
+        if (!is_null($request->teacher_id)) $Education->teacher_id = $request->teacher_id;
 
         $Education->save();
 

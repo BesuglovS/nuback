@@ -19,6 +19,7 @@ class CreateEducationTable extends Migration
             $table->string('specialty');
             $table->string('qualification');
             $table->integer('year');
+            $table->integer('teacher_id')->unsigned();
         });
     }
 

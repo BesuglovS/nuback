@@ -17,6 +17,7 @@ class AcademicDegreeController extends Controller
         $newAcademicDegree->degree = $request->degree ?? "";
         $newAcademicDegree->science_field = $request->science_field ?? "";
         $newAcademicDegree->date = $request->date ?? "";
+        $newAcademicDegree->teacher_id = $request->teacher_id ?? "";
 
         $newAcademicDegree->save();
 
@@ -33,6 +34,7 @@ class AcademicDegreeController extends Controller
         if (!is_null($request->degree)) $AcademicDegree->degree = $request->degree;
         if (!is_null($request->science_field)) $AcademicDegree->science_field = $request->science_field;
         if (!is_null($request->date)) $AcademicDegree->date = $request->date;
+        if (!is_null($request->teacher_id)) $AcademicDegree->teacher_id = $request->teacher_id;
 
         $AcademicDegree->save();
 

@@ -17,6 +17,7 @@ class ExperienceController extends Controller
         $newExperience->type = $request->type ?? "";
         $newExperience->duration = $request->duration ?? "";
         $newExperience->date = $request->date ?? "";
+        $newExperience->teacher_id = $request->teacher_id ?? "";
 
         $newExperience->save();
 
@@ -33,6 +34,7 @@ class ExperienceController extends Controller
         if (!is_null($request->type)) $Experience->type = $request->type;
         if (!is_null($request->duration)) $Experience->duration = $request->duration;
         if (!is_null($request->type)) $Experience->type = $request->type;
+        if (!is_null($request->teacher_id)) $Experience->teacher_id = $request->teacher_id;
 
         $Experience->save();
 

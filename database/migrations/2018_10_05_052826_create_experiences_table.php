@@ -18,6 +18,7 @@ class CreateExperiencesTable extends Migration
             $table->string('type');
             $table->integer('duration');
             $table->date('date');
+            $table->integer('teacher_id')->unsigned();
         });
     }
 
