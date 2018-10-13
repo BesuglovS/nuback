@@ -77,12 +77,16 @@ Route::middleware(['auth.api'])->group(function () {
     Route::post('/position/{id}', 'PositionController@update')->name('position.update');
     Route::delete('/position/{id}', 'PositionController@delete')->name('position.delete');
 
+    Route::get('/position/teacher/all/{id}', 'PositionController@teacherAll')->name('position.teacher.all');
+
     // experience
     Route::get('/experience/all', 'ExperienceController@all')->name('experience.all');
     Route::post('/experience/add', 'ExperienceController@add')->name('experience.add');
     Route::get('/experience/{id}', 'ExperienceController@get')->name('experience.get');
     Route::post('/experience/{id}', 'ExperienceController@update')->name('experience.update');
     Route::delete('/experience/{id}', 'ExperienceController@delete')->name('experience.delete');
+
+    Route::get('/experience/teacher/all/{id}', 'ExperienceController@teacherAll')->name('experience.teacher.all');
 
     // education
     Route::get('/education/all', 'EducationController@all')->name('education.all');
@@ -91,6 +95,8 @@ Route::middleware(['auth.api'])->group(function () {
     Route::post('/education/{id}', 'EducationController@update')->name('education.update');
     Route::delete('/education/{id}', 'EducationController@delete')->name('education.delete');
 
+    Route::get('/education/teacher/all/{id}', 'EducationController@teacherAll')->name('education.teacher.all');
+
     // academicDegree
     Route::get('/academicDegree/all', 'AcademicDegreeController@all')->name('academicDegree.all');
     Route::post('/academicDegree/add', 'AcademicDegreeController@add')->name('academicDegree.add');
@@ -98,12 +104,23 @@ Route::middleware(['auth.api'])->group(function () {
     Route::post('/academicDegree/{id}', 'AcademicDegreeController@update')->name('academicDegree.update');
     Route::delete('/academicDegree/{id}', 'AcademicDegreeController@delete')->name('academicDegree.delete');
 
+    Route::get('/academicDegree/teacher/all/{id}', 'AcademicDegreeController@teacherAll')->name('academicDegree.teacher.all');
+
     // academicRank
     Route::get('/academicRank/all', 'AcademicRankController@all')->name('academicRank.all');
     Route::post('/academicRank/add', 'AcademicRankController@add')->name('academicRank.add');
     Route::get('/academicRank/{id}', 'AcademicRankController@get')->name('academicRank.get');
     Route::post('/academicRank/{id}', 'AcademicRankController@update')->name('academicRank.update');
     Route::delete('/academicRank/{id}', 'AcademicRankController@delete')->name('academicRank.delete');
+
+    Route::get('/academicRank/teacher/all/{id}', 'AcademicRankController@teacherAll')->name('academicRank.teacher.all');
+
+    // department
+    Route::get('/department/all', 'DepartmentController@all')->name('department.all');
+    Route::post('/department/add', 'DepartmentController@add')->name('department.add');
+    Route::get('/department/{id}', 'DepartmentController@get')->name('department.get');
+    Route::post('/department/{id}', 'DepartmentController@update')->name('department.update');
+    Route::delete('/department/{id}', 'DepartmentController@delete')->name('department.delete');
 
     // UserPermission
     Route::get('/userPermission/all', 'UserPermissionController@all')->name('userPermission.all');
