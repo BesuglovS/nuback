@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DomainClasses\DepartmentHead;
+use App\DomainClasses\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -48,10 +49,14 @@ class DepartmentHeadController extends Controller
 
     public function departmentAll($departmentId) {
         $DepartmentHead = new DepartmentHead();
+        $Teacher = new Teacher();
         $dTableName = $DepartmentHead->getTable();
+        $tTableName = $Teacher->getTable();
 
         $result = DB::table($dTableName)
             ->where('department_id', '=', $departmentId)
+            ->join($tTableName, 'teacher_id', '=', $tTableName . '.id')
+            ->select($dTableName.'.*', $tTableName.'.f', $tTableName.'.i', $tTableName.'.o')
             ->get();
 
         return $result;
