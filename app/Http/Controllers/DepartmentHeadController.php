@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DomainClasses\DepartmentHead;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DepartmentHeadController extends Controller
 {
@@ -43,5 +44,16 @@ class DepartmentHeadController extends Controller
 
     public function delete($id) {
         return DepartmentHead::destroy($id);
+    }
+
+    public function departmentAll($departmentId) {
+        $DepartmentHead = new DepartmentHead();
+        $dTableName = $DepartmentHead->getTable();
+
+        $result = DB::table($dTableName)
+            ->where('department_id', '=', $departmentId)
+            ->get();
+
+        return $result;
     }
 }
