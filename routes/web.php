@@ -122,6 +122,13 @@ Route::middleware(['auth.api'])->group(function () {
     Route::post('/department/{id}', 'DepartmentController@update')->name('department.update');
     Route::delete('/department/{id}', 'DepartmentController@delete')->name('department.delete');
 
+    // departmentHead
+    Route::get('/departmentHead/all', 'DepartmentHeadController@all')->name('departmentHead.all');
+    Route::post('/departmentHead/add', 'DepartmentHeadController@add')->name('departmentHead.add');
+    Route::get('/departmentHead/{id}', 'DepartmentHeadController@get')->name('departmentHead.get');
+    Route::post('/departmentHead/{id}', 'DepartmentHeadController@update')->name('departmentHead.update');
+    Route::delete('/departmentHead/{id}', 'DepartmentHeadController@delete')->name('departmentHead.delete');
+
     // UserPermission
     Route::get('/userPermission/all', 'UserPermissionController@all')->name('userPermission.all');
     Route::get('/userPermission/{id}', 'UserPermissionController@get')->name('userPermission.get');
