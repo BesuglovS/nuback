@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DomainClasses\Education;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EducationController extends Controller
 {
@@ -45,5 +46,16 @@ class EducationController extends Controller
 
     public function delete($id) {
         return Education::destroy($id);
+    }
+
+    public function teacherAll($teacherId) {
+        $Education = new Education();
+        $eTableName = $Education->getTable();
+
+        $result = DB::table($eTableName)
+            ->where('teacher_id', '=', $teacherId)
+            ->get();
+
+        return $result;
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DomainClasses\Experience;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ExperienceController extends Controller
 {
@@ -43,5 +44,16 @@ class ExperienceController extends Controller
 
     public function delete($id) {
         return Experience::destroy($id);
+    }
+
+    public function teacherAll($teacherId) {
+        $Experience = new Experience();
+        $eTableName = $Experience->getTable();
+
+        $result = DB::table($eTableName)
+            ->where('teacher_id', '=', $teacherId)
+            ->get();
+
+        return $result;
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DomainClasses\AcademicDegree;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AcademicDegreeController extends Controller
 {
@@ -43,5 +44,16 @@ class AcademicDegreeController extends Controller
 
     public function delete($id) {
         return AcademicDegree::destroy($id);
+    }
+
+    public function teacherAll($teacherId) {
+        $AcademicDegree = new AcademicDegree();
+        $adTableName = $AcademicDegree->getTable();
+
+        $result = DB::table($adTableName)
+            ->where('teacher_id', '=', $teacherId)
+            ->get();
+
+        return $result;
     }
 }

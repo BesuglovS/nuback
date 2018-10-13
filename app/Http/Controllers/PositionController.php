@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DomainClasses\Position;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PositionController extends Controller
 {
@@ -18,7 +19,7 @@ class PositionController extends Controller
         $newPosition->position = $request->position ?? "";
         $newPosition->department = $request->department ?? "";
         $newPosition->order = $request->order ?? "";
-        $newPosition->elected = $request->elected ?? "";
+        $newPosition->elected = $request->elected ?? false;
         $newPosition->election_protocol = $request->election_protocol ?? "";
         $newPosition->teacher_id = $request->teacher_id ?? "";
 
@@ -49,5 +50,16 @@ class PositionController extends Controller
 
     public function delete($id) {
         return Position::destroy($id);
+    }
+
+    public function teacherAll($teacherId) {
+        $Position = new Position();
+        $pTableName = $Position->getTable();
+
+        $result = DB::table($pTableName)
+            ->where('teacher_id', '=', $teacherId)
+            ->get();
+
+        return $result;
     }
 }

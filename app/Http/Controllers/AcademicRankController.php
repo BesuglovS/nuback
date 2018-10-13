@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DomainClasses\AcademicRank;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AcademicRankController extends Controller
 {
@@ -41,5 +42,16 @@ class AcademicRankController extends Controller
 
     public function delete($id) {
         return AcademicRank::destroy($id);
+    }
+
+    public function teacherAll($teacherId) {
+        $AcademicRank = new AcademicRank();
+        $arTableName = $AcademicRank->getTable();
+
+        $result = DB::table($arTableName)
+            ->where('teacher_id', '=', $teacherId)
+            ->get();
+
+        return $result;
     }
 }
