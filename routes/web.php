@@ -131,6 +131,38 @@ Route::middleware(['auth.api'])->group(function () {
 
     Route::get('/departmentHead/department/{id}', 'DepartmentHeadController@departmentAll')->name('departmentHead.department.all');
 
+    // learningPlan
+    Route::get('/learningPlan/all', 'LearningPlanController@all')->name('learningPlan.all');
+    Route::post('/learningPlan/add', 'LearningPlanController@add')->name('learningPlan.add');
+    Route::get('/learningPlan/{id}', 'LearningPlanController@get')->name('learningPlan.get');
+    Route::post('/learningPlan/{id}', 'LearningPlanController@update')->name('learningPlan.update');
+    Route::delete('/learningPlan/{id}', 'LearningPlanController@delete')->name('learningPlan.delete');
+
+    // learningPlanDiscipline
+    Route::get('/learningPlanDiscipline/all', 'LearningPlanDisciplineController@all')->name('learningPlanDiscipline.all');
+    Route::post('/learningPlanDiscipline/add', 'LearningPlanDisciplineController@add')->name('learningPlanDiscipline.add');
+    Route::get('/learningPlanDiscipline/{id}', 'LearningPlanDisciplineController@get')->name('learningPlanDiscipline.get');
+    Route::post('/learningPlanDiscipline/{id}', 'LearningPlanDisciplineController@update')->name('learningPlanDiscipline.update');
+    Route::delete('/learningPlanDiscipline/{id}', 'LearningPlanDisciplineController@delete')->name('learningPlanDiscipline.delete');
+
+    Route::get('/learningPlanDiscipline/learningPlan/{id}', 'LearningPlanDisciplineController@learningPlanAll')->name('learningPlanDiscipline.learningPlan.all');
+
+    // learningPlanDisciplineSemester
+    Route::get('/learningPlanDisciplineSemester/all', 'LearningPlanDisciplineSemesterController@all')->name('learningPlanDisciplineSemester.all');
+    Route::post('/learningPlanDisciplineSemester/add', 'LearningPlanDisciplineSemesterController@add')->name('learningPlanDisciplineSemester.add');
+    Route::get('/learningPlanDisciplineSemester/{id}', 'LearningPlanDisciplineSemesterController@get')->name('learningPlanDisciplineSemester.get');
+    Route::post('/learningPlanDisciplineSemester/{id}', 'LearningPlanDisciplineSemesterController@update')->name('learningPlanDisciplineSemester.update');
+    Route::delete('/learningPlanDisciplineSemester/{id}', 'LearningPlanDisciplineSemesterController@delete')->name('learningPlanDisciplineSemester.delete');
+
+    Route::get('/learningPlanDisciplineSemester/learningPlanDiscipline/{id}', 'LearningPlanDisciplineSemesterController@learningPlanDisciplineAll')->name('learningPlanDisciplineSemester.learningPlanDiscipline.all');
+
+    // note
+    Route::get('/note/all', 'NoteController@all')->name('note.all');
+    Route::post('/note/add', 'NoteController@add')->name('note.add');
+    Route::get('/note/{id}', 'NoteController@get')->name('note.get');
+    Route::post('/note/{id}', 'NoteController@update')->name('note.update');
+    Route::delete('/note/{id}', 'NoteController@delete')->name('note.delete');
+
     // UserPermission
     Route::get('/userPermission/all', 'UserPermissionController@all')->name('userPermission.all');
     Route::get('/userPermission/{id}', 'UserPermissionController@get')->name('userPermission.get');
