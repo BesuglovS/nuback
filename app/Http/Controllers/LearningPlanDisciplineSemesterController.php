@@ -30,6 +30,7 @@ class LearningPlanDisciplineSemesterController extends Controller
         $newLearningPlanDisciplineSemester->control_task = $request->control_task ?? "";
         $newLearningPlanDisciplineSemester->referat = $request->referat ?? "";
         $newLearningPlanDisciplineSemester->essay = $request->essay ?? "";
+        $newLearningPlanDisciplineSemester->individual_hours = $request->individual_hours ?? "";
         $newLearningPlanDisciplineSemester->learning_plan_discipline_id = $request->learning_plan_discipline_id ?? "";
 
         $newLearningPlanDisciplineSemester->save();
@@ -59,6 +60,7 @@ class LearningPlanDisciplineSemesterController extends Controller
         if (!is_null($request->control_task)) $LearningPlanDisciplineSemester->control_task = $request->control_task;
         if (!is_null($request->referat)) $LearningPlanDisciplineSemester->referat = $request->referat;
         if (!is_null($request->essay)) $LearningPlanDisciplineSemester->essay = $request->essay;
+        if (!is_null($request->individual_hours)) $LearningPlanDisciplineSemester->individual_hours = $request->individual_hours;
         if (!is_null($request->learning_plan_discipline_id)) $LearningPlanDisciplineSemester->learning_plan_discipline_id = $request->learning_plan_discipline_id;
 
         $LearningPlanDisciplineSemester->save();
