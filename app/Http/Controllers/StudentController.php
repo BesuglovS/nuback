@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\DomainClasses\LearningPlan;
 use App\DomainClasses\Student;
+use App\DomainClasses\StudentLearningPlan;
 use App\DomainClasses\StudentStudentGroup;
 use App\DomainClasses\StudentGroup;
 use Illuminate\Http\Request;
@@ -96,6 +98,20 @@ class StudentController extends Controller
                 return $group;
             })
             ->toArray();
+
+        return $result;
+    }
+
+    public function learningPlans($studentId) {
+        $slp = new StudentLearningPlan();
+        $slpTablename = $slp->getTable();
+        $lp = new LearningPlan();
+        $lpTablename = $lp->getTable();
+
+        $result = DB::table($slpTablename)
+            ->where('student_id', '=', $studentId)
+            ->join($lpTablename, 'learning_plan_id', '=', 'learning_plans.id')
+            ->get();
 
         return $result;
     }

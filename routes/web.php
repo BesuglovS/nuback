@@ -32,6 +32,7 @@ Route::middleware(['auth.api'])->group(function () {
 
     Route::get('/student/group/all/{groupId}', 'StudentController@groupAll')->name('student.group.all');
     Route::get('/student/groups/{studentId}', 'StudentController@groups')->name('student.groups');
+    Route::get('/student/learningPlans/{studentId}', 'StudentController@learningPlans')->name('student.learningPlans');
 
     // studentGroup
     Route::get('/studentGroup/all', 'StudentGroupController@all')->name('studentGroup.all');
@@ -162,6 +163,13 @@ Route::middleware(['auth.api'])->group(function () {
     Route::get('/note/{id}', 'NoteController@get')->name('note.get');
     Route::post('/note/{id}', 'NoteController@update')->name('note.update');
     Route::delete('/note/{id}', 'NoteController@delete')->name('note.delete');
+
+    // studentStudentGroup
+    Route::get('/studentLearningPlan/all', 'StudentLearningPlanController@all')->name('studentLearningPlan.all');
+    Route::post('/studentLearningPlan/add', 'StudentLearningPlanController@add')->name('studentLearningPlan.add');
+    Route::get('/studentLearningPlan/{id}', 'StudentLearningPlanController@get')->name('studentLearningPlan.get');
+    Route::post('/studentLearningPlan/{id}', 'StudentLearningPlanController@update')->name('studentLearningPlan.update');
+    Route::delete('/studentLearningPlan/{id}', 'StudentLearningPlanController@delete')->name('studentLearningPlan.delete');
 
     // UserPermission
     Route::get('/userPermission/all', 'UserPermissionController@all')->name('userPermission.all');
