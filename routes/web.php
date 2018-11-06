@@ -171,6 +171,25 @@ Route::middleware(['auth.api'])->group(function () {
     Route::post('/studentLearningPlan/{id}', 'StudentLearningPlanController@update')->name('studentLearningPlan.update');
     Route::delete('/studentLearningPlan/{id}', 'StudentLearningPlanController@delete')->name('studentLearningPlan.delete');
 
+    // TeacherCard
+    Route::get('/teacherCard/all', 'TeacherCardController@all')->name('teacherCard.all');
+    Route::post('/teacherCard/add', 'TeacherCardController@add')->name('teacherCard.add');
+    Route::get('/teacherCard/{id}', 'TeacherCardController@get')->name('teacherCard.get');
+    Route::post('/teacherCard/{id}', 'TeacherCardController@update')->name('teacherCard.update');
+    Route::delete('/teacherCard/{id}', 'TeacherCardController@delete')->name('teacherCard.delete');
+
+    Route::get('/teacherCard/teacher/{id}', 'TeacherCardController@teacherAll')->name('teacherCard.teacher.all');
+
+    // TeacherCardItem
+    Route::get('/teacherCardItem/all', 'TeacherCardItemController@all')->name('teacherCardItem.all');
+    Route::post('/teacherCardItem/add', 'TeacherCardItemController@add')->name('teacherCardItem.add');
+    Route::get('/teacherCardItem/{id}', 'TeacherCardItemController@get')->name('teacherCardItem.get');
+    Route::post('/teacherCardItem/{id}', 'TeacherCardItemController@update')->name('teacherCardItem.update');
+    Route::delete('/teacherCardItem/{id}', 'TeacherCardItemController@delete')->name('teacherCardItem.delete');
+
+    Route::get('/teacherCardItem/teacherCard/{id}', 'TeacherCardItemController@teacherCardAll')->name('teacherCardItem.teacherCardAll');
+    Route::get('/teacherCardItem/teacher/{id}', 'TeacherCardItemController@teacherAll')->name('teacherCardItem.teacherAll');
+
     // UserPermission
     Route::get('/userPermission/all', 'UserPermissionController@all')->name('userPermission.all');
     Route::get('/userPermission/{id}', 'UserPermissionController@get')->name('userPermission.get');
