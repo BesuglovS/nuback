@@ -14,6 +14,7 @@ class LearningPlanController extends Controller
     public function add(Request $request) {
         $newLearningPlan = new LearningPlan();
 
+        $newLearningPlan->name = $request->name ?? "";
         $newLearningPlan->speciality_code = $request->speciality_code ?? "";
         $newLearningPlan->speciality_name = $request->speciality_name ?? "";
         $newLearningPlan->profile = $request->profile ?? "";
@@ -33,6 +34,7 @@ class LearningPlanController extends Controller
     public function update($id, Request $request) {
         $LearningPlan = LearningPlan::find($id);
 
+        if (!is_null($request->name)) $LearningPlan->name = $request->name;
         if (!is_null($request->speciality_code)) $LearningPlan->speciality_code = $request->speciality_code;
         if (!is_null($request->speciality_name)) $LearningPlan->speciality_name = $request->speciality_name;
         if (!is_null($request->profile)) $LearningPlan->profile = $request->profile;

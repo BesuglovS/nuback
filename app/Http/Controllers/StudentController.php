@@ -111,17 +111,12 @@ class StudentController extends Controller
         $result = DB::table($slpTablename)
             ->where('student_id', '=', $studentId)
             ->join($lpTablename, 'learning_plan_id', '=', 'learning_plans.id')
-            ->select($slpTablename . '.id',
-                $slpTablename . '.student_id',
+            ->select($slpTablename . '.student_id',
                 $slpTablename . '.learning_plan_id',
                 $slpTablename . '.from',
                 $slpTablename . '.to',
-                $lpTablename . '.speciality_code',
-                $lpTablename . '.speciality_name',
-                $lpTablename . '.profile',
-                $lpTablename . '.starting_year',
-                $lpTablename . '.education_standard',
-                $lpTablename . '.faculty_id'
+                $lpTablename . '.*',
+                $slpTablename . '.id'
                 )
             ->get();
 
