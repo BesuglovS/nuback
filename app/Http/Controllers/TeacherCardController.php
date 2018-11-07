@@ -22,6 +22,7 @@ class TeacherCardController extends Controller
         $newTeacherCard->department_rank = $request->department_rank ?? "";
         $newTeacherCard->department_id = $request->department_id ?? "";
         $newTeacherCard->position_type = $request->position_type ?? "";
+        $newTeacherCard->starting_year = $request->starting_year ?? "";
 
         $newTeacherCard->save();
 
@@ -42,6 +43,7 @@ class TeacherCardController extends Controller
         if (!is_null($request->department_rank)) $TeacherCard->department_rank = $request->department_rank;
         if (!is_null($request->department_id)) $TeacherCard->department_id = $request->department_id;
         if (!is_null($request->position_type)) $TeacherCard->position_type = $request->position_type;
+        if (!is_null($request->starting_year)) $TeacherCard->starting_year = $request->starting_year;
 
 
         $TeacherCard->save();
