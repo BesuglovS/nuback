@@ -172,6 +172,8 @@ Route::middleware(['auth.api'])->group(function () {
     Route::delete('/studentLearningPlan/{id}', 'StudentLearningPlanController@delete')->name('studentLearningPlan.delete');
 
     // TeacherCard
+    Route::get('/teacherCard/allYears', 'TeacherCardController@allYears')->name('teacherCard.allYears');
+
     Route::get('/teacherCard/all', 'TeacherCardController@all')->name('teacherCard.all');
     Route::post('/teacherCard/add', 'TeacherCardController@add')->name('teacherCard.add');
     Route::get('/teacherCard/{id}', 'TeacherCardController@get')->name('teacherCard.get');
@@ -179,6 +181,12 @@ Route::middleware(['auth.api'])->group(function () {
     Route::delete('/teacherCard/{id}', 'TeacherCardController@delete')->name('teacherCard.delete');
 
     Route::get('/teacherCard/teacher/{id}', 'TeacherCardController@teacherAll')->name('teacherCard.teacher.all');
+    Route::get('/teacherCard/year/{year}', 'TeacherCardController@year')->name('teacherCard.year.all');
+    Route::get('/teacherCard/yearDepartmentIds/{year}', 'TeacherCardController@yearDepartmentIds')->name('teacherCard.yearDepartmentIds');
+    Route::get('/teacherCard/departmentId/{departmentId}', 'TeacherCardController@departmentId')->name('teacherCard.departmentId.all');
+    Route::get('/teacherCard/yearDepartmentId/{year}/{departmentId}', 'TeacherCardController@yearDepartmentId')->name('teacherCard.yearDepartmentId.all');
+    Route::get('/teacherCard/yearDepartmentIdJoined/{year}/{departmentId}', 'TeacherCardController@yearDepartmentIdJoined')->name('teacherCard.yearDepartmentIdJoined.all');
+
 
     // TeacherCardItem
     Route::get('/teacherCardItem/all', 'TeacherCardItemController@all')->name('teacherCardItem.all');

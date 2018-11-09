@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\DomainClasses\Department;
+use App\DomainClasses\Teacher;
 use App\DomainClasses\TeacherCard;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -10,6 +12,19 @@ class TeacherCardController extends Controller
 {
     public function all() {
         return TeacherCard::all();
+    }
+
+    public function allYears() {
+        $TeacherCard = new TeacherCard();
+        $tcTableName = $TeacherCard->getTable();
+
+        $result = array_column(DB::table($tcTableName)
+            ->distinct()
+            ->get(['starting_year'])//
+            ->toArray(),
+            'starting_year');
+
+        return $result;
     }
 
     public function add(Request $request) {
@@ -61,6 +76,73 @@ class TeacherCardController extends Controller
 
         $result = DB::table($tcTableName)
             ->where('teacher_id', '=', $teacherId)
+            ->get();
+
+        return $result;
+    }
+
+    public function year($year) {
+        $TeacherCard = new TeacherCard();
+        $tcTableName = $TeacherCard->getTable();
+
+        $result = DB::table($tcTableName)
+            ->where('starting_year', '=', $year)
+            ->get();
+
+        return $result;
+    }
+
+    public function yearDepartmentIds($year) {
+        $TeacherCard = new TeacherCard();
+        $tcTableName = $TeacherCard->getTable();
+
+        $result = array_column(DB::table($tcTableName)
+            ->where('starting_year', '=', $year)
+            ->distinct()
+            ->get(['department_id'])
+            ->toArray(),
+            'department_id');
+
+        return $result;
+    }
+
+    public function departmentId($departmentId) {
+        $TeacherCard = new TeacherCard();
+        $tcTableName = $TeacherCard->getTable();
+
+        $result = DB::table($tcTableName)
+            ->where(['department_id' => $departmentId])
+            ->get();
+
+        return $result;
+    }
+
+    public function yearDepartmentId($year, $departmentId) {
+        $TeacherCard = new TeacherCard();
+        $tcTableName = $TeacherCard->getTable();
+
+        $result = DB::table($tcTableName)
+            ->where(['starting_year' => $year, 'department_id' => $departmentId])
+            ->get();
+
+        return $result;
+    }
+
+    public function yearDepartmentIdJoined($year, $departmentId) {
+        $TeacherCard = new TeacherCard();
+        $tcTableName = $TeacherCard->getTable();
+
+        $Teacher = new Teacher();
+        $tTableName = $Teacher->getTable();
+
+        $Department = new Department();
+        $dTableName = $Department->getTable();
+
+        $result = DB::table($tcTableName)
+            ->where(['starting_year' => $year, 'department_id' => $departmentId])
+            ->join($tTableName, 'teacher_id', '=', $tTableName . '.id')
+            ->select($tcTableName . '.*',
+                $tTableName . '.f', $tTableName . '.i', $tTableName . '.o')
             ->get();
 
         return $result;
