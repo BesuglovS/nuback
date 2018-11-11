@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DomainClasses\PositionYearRateHours;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PositionYearRateHoursController extends Controller
 {
@@ -41,5 +42,29 @@ class PositionYearRateHoursController extends Controller
 
     public function delete($id) {
         return PositionYearRateHours::destroy($id);
+    }
+
+    public function allYears() {
+        $PositionYearRateHours = new PositionYearRateHours();
+        $pyrhTableName = $PositionYearRateHours->getTable();
+
+        $result = array_column(DB::table($pyrhTableName)
+            ->distinct()
+            ->get(['year'])
+            ->toArray(),
+            'year');
+
+        return $result;
+    }
+
+    public function year($year) {
+        $PositionYearRateHours = new PositionYearRateHours();
+        $pyrhTableName = $PositionYearRateHours->getTable();
+
+        $result = DB::table($pyrhTableName)
+            ->where('year', '=', $year)
+            ->get();
+
+        return $result;
     }
 }
