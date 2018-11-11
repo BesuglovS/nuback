@@ -16,7 +16,7 @@ class CreatePositionYearRateHoursTable extends Migration
         Schema::create('position_year_rate_hours', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('year');
-            $table->integer('position');
+            $table->string('position');
             $table->integer('rate_hours');
         });
     }
