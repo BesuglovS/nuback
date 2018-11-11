@@ -198,6 +198,13 @@ Route::middleware(['auth.api'])->group(function () {
     Route::get('/teacherCardItem/teacherCard/{id}', 'TeacherCardItemController@teacherCardAll')->name('teacherCardItem.teacherCardAll');
     Route::get('/teacherCardItem/teacher/{id}', 'TeacherCardItemController@teacherAll')->name('teacherCardItem.teacherAll');
 
+    // PositionYearRateHours
+    Route::get('/positionYearRateHours/all', 'PositionYearRateHoursController@all')->name('positionYearRateHours.all');
+    Route::post('/positionYearRateHours/add', 'PositionYearRateHoursController@add')->name('positionYearRateHours.add');
+    Route::get('/positionYearRateHours/{id}', 'PositionYearRateHoursController@get')->name('positionYearRateHours.get');
+    Route::post('/positionYearRateHours/{id}', 'PositionYearRateHoursController@update')->name('positionYearRateHours.update');
+    Route::delete('/positionYearRateHours/{id}', 'PositionYearRateHoursController@delete')->name('positionYearRateHours.delete');
+
     // UserPermission
     Route::get('/userPermission/all', 'UserPermissionController@all')->name('userPermission.all');
     Route::get('/userPermission/{id}', 'UserPermissionController@get')->name('userPermission.get');
