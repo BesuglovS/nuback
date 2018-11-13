@@ -91,14 +91,14 @@ class DepartmentController extends Controller
                     if (array_key_exists($position, $result["rate_values"]))
                     {
                         $rateMultiplier = $tcHours / $pRate->rate_hours;
-                        $result["rate_values"][$position]["2"] = bcadd($result["rate_values"][$position]["2"], round($rateMultiplier, 2), 2);
-                        $result["rate_values"][$position]["3"] = bcadd($result["rate_values"][$position]["3"], round($rateMultiplier, 3), 3);
+                        $result["rate_values"][$position]["r2"] = bcadd($result["rate_values"][$position]["r2"], round($rateMultiplier, 2), 2);
+                        $result["rate_values"][$position]["r3"] = bcadd($result["rate_values"][$position]["r3"], round($rateMultiplier, 3), 3);
                     }
                     else
                     {
                         $rateMultiplier = $tcHours / $pRate->rate_hours;
-                        $result["rate_values"][$position]["2"] = bcadd(round($rateMultiplier, 2), 0, 2);
-                        $result["rate_values"][$position]["3"] = bcadd(round($rateMultiplier, 3), 0, 3);
+                        $result["rate_values"][$position]["r2"] = bcadd(round($rateMultiplier, 2), 0, 2);
+                        $result["rate_values"][$position]["r3"] = bcadd(round($rateMultiplier, 3), 0, 3);
                     }
                 }
             }
@@ -114,8 +114,8 @@ class DepartmentController extends Controller
         {
             $rate = [];
             $rate["position"] = $position;
-            $rate["2"] = $positionRates["2"];
-            $rate["3"] = $positionRates["3"];
+            $rate["r2"] = $positionRates["r2"];
+            $rate["r3"] = $positionRates["r3"];
 
             $rates[] = $rate;
         }
