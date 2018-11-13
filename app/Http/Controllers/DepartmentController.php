@@ -108,6 +108,20 @@ class DepartmentController extends Controller
             }
         }
 
+        $rates = [];
+
+        foreach ($result["rate_values"] as $position => $positionRates)
+        {
+            $rate = [];
+            $rate["position"] = $position;
+            $rate["2"] = $positionRates["2"];
+            $rate["3"] = $positionRates["3"];
+
+            $rates[] = $rate;
+        }
+
+        $result["rate_values"] = $rates;
+
         return $result;
     }
 }
