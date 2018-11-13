@@ -123,6 +123,8 @@ Route::middleware(['auth.api'])->group(function () {
     Route::post('/department/{id}', 'DepartmentController@update')->name('department.update');
     Route::delete('/department/{id}', 'DepartmentController@delete')->name('department.delete');
 
+    Route::get('/department/rateHours/{year}/{departmentId}', 'DepartmentController@rateHours')->name('department.rateHours');
+
     // departmentHead
     Route::get('/departmentHead/all', 'DepartmentHeadController@all')->name('departmentHead.all');
     Route::post('/departmentHead/add', 'DepartmentHeadController@add')->name('departmentHead.add');
