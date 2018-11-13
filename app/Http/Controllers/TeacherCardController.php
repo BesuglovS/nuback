@@ -38,6 +38,7 @@ class TeacherCardController extends Controller
         $newTeacherCard->department_id = $request->department_id ?? "";
         $newTeacherCard->position_type = $request->position_type ?? "";
         $newTeacherCard->starting_year = $request->starting_year ?? "";
+        $newTeacherCard->rate_multiplier = $request->rate_multiplier ?? "";
 
         $newTeacherCard->save();
 
@@ -59,6 +60,7 @@ class TeacherCardController extends Controller
         if (!is_null($request->department_id)) $TeacherCard->department_id = $request->department_id;
         if (!is_null($request->position_type)) $TeacherCard->position_type = $request->position_type;
         if (!is_null($request->starting_year)) $TeacherCard->starting_year = $request->starting_year;
+        if (!is_null($request->rate_multiplier)) $TeacherCard->rate_multiplier = $request->rate_multiplier;
 
 
         $TeacherCard->save();
