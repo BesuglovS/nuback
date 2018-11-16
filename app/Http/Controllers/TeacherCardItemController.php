@@ -40,6 +40,7 @@ class TeacherCardItemController extends Controller
         $newTeacherCardItem->nrm_hours = $request->nrm_hours ?? "";
         $newTeacherCardItem->individual_hours = $request->individual_hours ?? "";
         $newTeacherCardItem->teacher_card_id = $request->teacher_card_id ?? "";
+        $newTeacherCardItem->real_teacher_id = $request->real_teacher_id ?? "";
 
         $newTeacherCardItem->save();
 
@@ -77,6 +78,7 @@ class TeacherCardItemController extends Controller
         if (!is_null($request->nrm_hours)) $TeacherCardItem->nrm_hours = $request->nrm_hours;
         if (!is_null($request->individual_hours)) $TeacherCardItem->individual_hours = $request->individual_hours;
         if (!is_null($request->teacher_card_id)) $TeacherCardItem->teacher_card_id = $request->teacher_card_id;
+        if (!is_null($request->real_teacher_id)) $TeacherCardItem->real_teacher_id = $request->real_teacher_id;
 
 
         $TeacherCardItem->save();
