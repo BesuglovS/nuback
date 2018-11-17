@@ -75,6 +75,7 @@ class StudentController extends Controller
         $result = DB::table($ssgTablename)
             ->where('student_group_id', '=', $groupId)
             ->join($sTablename, 'student_id', '=', $sTablename . '.id')
+            ->select($sTablename . '.*', $ssgTablename . '.*' )
             ->get();
 
         return $result;
