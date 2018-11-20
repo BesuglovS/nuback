@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DomainClasses\LearningPlanDiscipline;
 use App\DomainClasses\LearningPlanDisciplineSemester;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -79,6 +80,22 @@ class LearningPlanDisciplineSemesterController extends Controller
 
         $result = DB::table($lpdsTableName)
             ->where('learning_plan_discipline_id', '=', $learningPlanDisciplineId)
+            ->get();
+
+        return $result;
+    }
+
+    public function learningPlanAll($learningPlanId)
+    {
+        $LearningPlanDisciplineSemester = new LearningPlanDisciplineSemester();
+        $lpdsTableName = $LearningPlanDisciplineSemester->getTable();
+
+        $LearningPlanDiscipline = new LearningPlanDiscipline();
+        $lpdTableName = $LearningPlanDiscipline->getTable();
+        $result = DB::table($lpdsTableName)
+            ->where($lpdTableName . '.learning_plan_id', '=', $learningPlanId)
+            ->join($lpdTableName, 'learning_plan_discipline_id', '=', $lpdTableName . '.id')
+            ->select($lpdTableName . '.*', $lpdsTableName . '.*')
             ->get();
 
         return $result;

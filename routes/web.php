@@ -158,6 +158,7 @@ Route::middleware(['auth.api'])->group(function () {
     Route::delete('/learningPlanDisciplineSemester/{id}', 'LearningPlanDisciplineSemesterController@delete')->name('learningPlanDisciplineSemester.delete');
 
     Route::get('/learningPlanDisciplineSemester/learningPlanDiscipline/{id}', 'LearningPlanDisciplineSemesterController@learningPlanDisciplineAll')->name('learningPlanDisciplineSemester.learningPlanDiscipline.all');
+    Route::get('/learningPlanDisciplineSemester/learningPlan/{id}', 'LearningPlanDisciplineSemesterController@learningPlanAll')->name('learningPlanDisciplineSemester.learningPlan.all');
 
     // note
     Route::get('/note/all', 'NoteController@all')->name('note.all');
