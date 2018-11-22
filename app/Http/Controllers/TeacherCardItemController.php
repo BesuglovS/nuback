@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\DomainClasses\StudentGroup;
+use App\DomainClasses\StudentStudentGroup;
 use App\DomainClasses\TeacherCard;
 use App\DomainClasses\TeacherCardItem;
 use Illuminate\Http\Request;
@@ -112,6 +114,40 @@ class TeacherCardItemController extends Controller
             ->join($tcTableName, 'teacher_card_id', '=', $tcTableName . '.id')
             ->select($tcTableName . '.*', $tciTableName . '.*')
             ->where('starting_year', '=', $year)
+            ->get();
+
+        return $result;
+    }
+
+    public function yearSemesterStudentIdAll($year, $semester, $studentId) {
+        $TeacherCardItem = new TeacherCardItem();
+        $tciTableName = $TeacherCardItem->getTable();
+
+        $TeacherCard = new TeacherCard();
+        $tcTableName = $TeacherCard->getTable();
+
+        $StudentGroup = new StudentGroup();
+        $sgTableName = $StudentGroup->getTable();
+
+        $StudentStudentGroup = new StudentStudentGroup();
+        $ssgTableName = $StudentStudentGroup->getTable();
+
+        $groups = DB::table($ssgTableName)
+            ->join($sgTableName, 'student_group_id', '=', $sgTableName . '.id')
+            ->select($sgTableName . '.*', $ssgTableName . '.*')
+            ->where(['student_id' => $studentId])
+            ->get()
+            ->toArray();
+
+        //return $groups;
+
+        $groupNames = array_column($groups, 'name');
+
+        $result = DB::table($tciTableName)
+            ->join($tcTableName, 'teacher_card_id', '=', $tcTableName . '.id')
+            ->select($tcTableName . '.*', $tciTableName . '.*')
+            ->where(['starting_year' => $year, 'semester' => $semester])
+            ->whereIn('group_name', $groupNames)
             ->get();
 
         return $result;

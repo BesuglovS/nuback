@@ -201,6 +201,7 @@ Route::middleware(['auth.api'])->group(function () {
     Route::get('/teacherCardItem/teacherCard/{id}', 'TeacherCardItemController@teacherCardAll')->name('teacherCardItem.teacherCardAll');
     Route::get('/teacherCardItem/teacher/{id}', 'TeacherCardItemController@teacherAll')->name('teacherCardItem.teacherAll');
     Route::get('/teacherCardItem/year/{year}', 'TeacherCardItemController@yearAll')->name('teacherCardItem.yearAll');
+    Route::get('/teacherCardItem/yearSemesterStudentId/{year}/{semester}/{studentId}', 'TeacherCardItemController@yearSemesterStudentIdAll')->name('teacherCardItem.yearSemesterStudentIdAll');
 
     // PositionYearRateHours
     Route::get('/positionYearRateHours/allYears', 'PositionYearRateHoursController@allYears')->name('positionYearRateHours.allYears');
