@@ -101,6 +101,22 @@ class TeacherCardItemController extends Controller
         return $result;
     }
 
+    public function yearAll($year) {
+        $TeacherCardItem = new TeacherCardItem();
+        $tciTableName = $TeacherCardItem->getTable();
+
+        $TeacherCard = new TeacherCard();
+        $tcTableName = $TeacherCard->getTable();
+
+        $result = DB::table($tciTableName)
+            ->join($tcTableName, 'teacher_card_id', '=', $tcTableName . '.id')
+            ->select($tcTableName . '.*', $tciTableName . '.*')
+            ->where('starting_year', '=', $year)
+            ->get();
+
+        return $result;
+    }
+
     public function teacherAll($teacherId) {
         $TeacherCard = new TeacherCard();
         $tcTableName = $TeacherCard->getTable();
