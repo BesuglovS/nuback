@@ -214,6 +214,22 @@ Route::middleware(['auth.api'])->group(function () {
 
     Route::get('/positionYearRateHours/year/{year}', 'PositionYearRateHoursController@year')->name('positionYearRateHours.year.all');
 
+    // markType
+    Route::get('/markType/all', 'MarkTypeController@all')->name('markType.all');
+    Route::post('/markType/add', 'MarkTypeController@add')->name('markType.add');
+    Route::get('/markType/{id}', 'MarkTypeController@get')->name('markType.get');
+    Route::post('/markType/{id}', 'MarkTypeController@update')->name('markType.update');
+    Route::delete('/markType/{id}', 'MarkTypeController@delete')->name('markType.delete');
+
+    // markTypeOption
+    Route::get('/markTypeOption/all', 'MarkTypeOptionController@all')->name('markTypeOption.all');
+    Route::post('/markTypeOption/add', 'MarkTypeOptionController@add')->name('markTypeOption.add');
+    Route::get('/markTypeOption/{id}', 'MarkTypeOptionController@get')->name('markTypeOption.get');
+    Route::post('/markTypeOption/{id}', 'MarkTypeOptionController@update')->name('markTypeOption.update');
+    Route::delete('/markTypeOption/{id}', 'MarkTypeOptionController@delete')->name('markTypeOption.delete');
+
+    Route::get('/markTypeOption/markType/{markTypeId}', 'MarkTypeOptionController@markTypeAll')->name('markTypeOption.markType.All');
+
     // UserPermission
     Route::get('/userPermission/all', 'UserPermissionController@all')->name('userPermission.all');
     Route::get('/userPermission/{id}', 'UserPermissionController@get')->name('userPermission.get');
