@@ -230,6 +230,22 @@ Route::middleware(['auth.api'])->group(function () {
 
     Route::get('/markTypeOption/markType/{markTypeId}', 'MarkTypeOptionController@markTypeAll')->name('markTypeOption.markType.All');
 
+    // mark
+    Route::get('/mark/all', 'MarkController@all')->name('mark.all');
+    Route::post('/mark/add', 'MarkController@add')->name('mark.add');
+    Route::get('/mark/{id}', 'MarkController@get')->name('mark.get');
+    Route::post('/mark/{id}', 'MarkController@update')->name('mark.update');
+    Route::delete('/mark/{id}', 'MarkController@delete')->name('mark.delete');
+
+    Route::get('/mark/student/{studentId}', 'MarkController@studentAll')->name('mark.student.all');
+
+    // markTeacher
+    Route::get('/markTeacher/all', 'MarkTeacherController@all')->name('markTeacher.all');
+    Route::post('/markTeacher/add', 'MarkTeacherController@add')->name('markTeacher.add');
+    Route::get('/markTeacher/{id}', 'MarkTeacherController@get')->name('markTeacher.get');
+    Route::post('/markTeacher/{id}', 'MarkTeacherController@update')->name('markTeacher.update');
+    Route::delete('/markTeacher/{id}', 'MarkTeacherController@delete')->name('markTeacher.delete');
+
     // UserPermission
     Route::get('/userPermission/all', 'UserPermissionController@all')->name('userPermission.all');
     Route::get('/userPermission/{id}', 'UserPermissionController@get')->name('userPermission.get');
