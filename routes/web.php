@@ -238,6 +238,7 @@ Route::middleware(['auth.api'])->group(function () {
     Route::delete('/mark/{id}', 'MarkController@delete')->name('mark.delete');
 
     Route::get('/mark/student/{studentId}', 'MarkController@studentAll')->name('mark.student.all');
+    Route::get('/mark/studentDisciplineSemester/{studentId}/{lpds_id}', 'MarkController@studentDisciplineSemesterAll')->name('mark.student.studentDisciplineSemesterAll');
 
     // markTeacher
     Route::get('/markTeacher/all', 'MarkTeacherController@all')->name('markTeacher.all');

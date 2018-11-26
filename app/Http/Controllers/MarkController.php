@@ -66,4 +66,15 @@ class MarkController extends Controller
 
         return $result;
     }
+
+    public function studentDisciplineSemesterAll($studentId, $lpds_id) {
+        $Mark = new Mark();
+        $mTableName = $Mark->getTable();
+
+        $result = DB::table($mTableName)
+            ->where(['student_id' => $studentId, 'learning_plan_discipline_semester_id' => $lpds_id])
+            ->get();
+
+        return $result;
+    }
 }
