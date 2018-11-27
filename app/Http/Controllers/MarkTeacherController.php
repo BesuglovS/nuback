@@ -47,13 +47,8 @@ class MarkTeacherController extends Controller
         $MarkTeacher = new MarkTeacher();
         $mtTableName = $MarkTeacher->getTable();
 
-        $Teacher = new Teacher();
-        $tTableName = $Teacher->getTable();
-
         $result = DB::table($mtTableName)
             ->where(['mark_id' => $markId])
-            ->join($tTableName, 'teacher_id', '=', $tTableName . '.id')
-            ->select($tTableName . '.f', $tTableName . '.i', $tTableName . '.o', $mtTableName . '.*')
             ->get();
 
         return $result;
