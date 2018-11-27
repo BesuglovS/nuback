@@ -247,6 +247,8 @@ Route::middleware(['auth.api'])->group(function () {
     Route::post('/markTeacher/{id}', 'MarkTeacherController@update')->name('markTeacher.update');
     Route::delete('/markTeacher/{id}', 'MarkTeacherController@delete')->name('markTeacher.delete');
 
+    Route::get('/markTeacher/mark/{markId}', 'MarkTeacherController@markAll')->name('markTeacher.mark.all');
+
     // UserPermission
     Route::get('/userPermission/all', 'UserPermissionController@all')->name('userPermission.all');
     Route::get('/userPermission/{id}', 'UserPermissionController@get')->name('userPermission.get');

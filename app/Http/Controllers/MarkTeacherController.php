@@ -53,7 +53,7 @@ class MarkTeacherController extends Controller
         $result = DB::table($mtTableName)
             ->where(['mark_id' => $markId])
             ->join($tTableName, 'teacher_id', '=', $tTableName . '.id')
-            ->select($tTableName . '.*', $mtTableName . '.*')
+            ->select($tTableName . '.f', $tTableName . '.i', $tTableName . '.o', $mtTableName . '.*')
             ->get();
 
         return $result;
