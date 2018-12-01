@@ -24,6 +24,7 @@ class LearningPlanDisciplineController extends Controller
         $newLearningPlanDiscipline->control_hours = $request->control_hours ?? "";
         $newLearningPlanDiscipline->z_count = $request->z_count ?? "";
         $newLearningPlanDiscipline->learning_plan_id = $request->learning_plan_id ?? "";
+        $newLearningPlanDiscipline->order = $request->order ?? "";
 
         $newLearningPlanDiscipline->save();
 
@@ -45,6 +46,7 @@ class LearningPlanDisciplineController extends Controller
         if (!is_null($request->control_hours)) $LearningPlanDiscipline->control_hours = $request->control_hours;
         if (!is_null($request->z_count)) $LearningPlanDiscipline->z_count = $request->z_count;
         if (!is_null($request->learning_plan_id)) $LearningPlanDiscipline->learning_plan_id = $request->learning_plan_id;
+        if (!is_null($request->order)) $LearningPlanDiscipline->order = $request->order;
 
         $LearningPlanDiscipline->save();
 
