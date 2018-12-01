@@ -53,4 +53,18 @@ class MarkTeacherController extends Controller
 
         return $result;
     }
+
+    public function deleteMarkAll($markId) {
+        $MarkTeacher = new MarkTeacher();
+        $mtTableName = $MarkTeacher->getTable();
+
+        $IdsToDelete = array_column(DB::table($mtTableName)
+            ->where(['mark_id' => $markId])
+            ->select($mtTableName.'.id')
+            ->get()->toArray(), 'id');
+
+        $result = DB::table($mtTableName)->whereIn('id', $IdsToDelete)->delete();
+
+        return $result;
+    }
 }
