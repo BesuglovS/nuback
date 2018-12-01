@@ -248,7 +248,7 @@ Route::middleware(['auth.api'])->group(function () {
     Route::delete('/markTeacher/{id}', 'MarkTeacherController@delete')->name('markTeacher.delete');
 
     Route::get('/markTeacher/mark/{markId}', 'MarkTeacherController@markAll')->name('markTeacher.mark.all');
-    Route::get('/dmarkTeacher/mark/{markId}', 'MarkTeacherController@deleteMarkAll')->name('markTeacher.deleteMark.all');
+    Route::delete('/markTeacher/mark/{markId}', 'MarkTeacherController@deleteMarkAll')->name('markTeacher.deleteMark.all');
 
     // UserPermission
     Route::get('/userPermission/all', 'UserPermissionController@all')->name('userPermission.all');
